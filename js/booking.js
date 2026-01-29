@@ -16,12 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 폼 데이터 수집
+            // 폼 데이터 수집 및 sanitize
             const formData = new FormData(bookingForm);
             const bookingData = {};
             
             formData.forEach((value, key) => {
-                bookingData[key] = value;
+                // XSS 방지를 위한 기본 sanitization
+                const sanitizedValue = String(value)
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#x27;')
+                    .replace(/\//g, '&#x2F;');
+                bookingData[key] = sanitizedValue;
             });
             
             // 실제 애플리케이션에서는 여기서 서버에 데이터를 전송

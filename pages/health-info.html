@@ -331,16 +331,37 @@
             <p>🏥 행복한 동물병원</p>
             <p>📍 서울특별시 강남구 행복로 123</p>
             <p>☎️ 02-1234-5678 | 📧 info@happyvet.com</p>
-            <p style="margin-top: 2rem; opacity: 0.8;">© 2024 행복한 동물병원. All rights reserved.</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 행복한 동물병원. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="../js/main.js"></script>
     <script>
-        // FAQ 아코디언
-        document.querySelectorAll('.faq-item').forEach(item => {
+        // FAQ 아코디언 (접근성 향상)
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            
+            // ARIA 속성 추가
+            question.setAttribute('role', 'button');
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('aria-expanded', 'false');
+            question.setAttribute('aria-controls', `faq-answer-${index}`);
+            
+            const answer = item.querySelector('.faq-answer');
+            answer.setAttribute('id', `faq-answer-${index}`);
+            
+            // 클릭 이벤트
             item.addEventListener('click', function() {
-                this.classList.toggle('active');
+                const isActive = this.classList.toggle('active');
+                question.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            });
+            
+            // 키보드 접근성 (Enter/Space)
+            question.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
             });
         });
     </script>

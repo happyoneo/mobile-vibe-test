@@ -124,7 +124,7 @@ npx http-server
 
 ## 라이선스
 
-© 2024 행복한 동물병원. All rights reserved.
+© 2026 행복한 동물병원. All rights reserved.
 
 ## 문의
 
