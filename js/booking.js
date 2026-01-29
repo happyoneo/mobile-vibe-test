@@ -3,6 +3,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('bookingForm');
     const successMessage = document.getElementById('successMessage');
+    const submitButton = bookingForm ? bookingForm.querySelector('.submit-button') : null;
+    
     
     if (bookingForm) {
         // 오늘 날짜를 최소 날짜로 설정

@@ -6,7 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.getElementById('navMenu');
     
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        // 터치와 클릭 모두 지원 (중복 호출 방지)
+        let touchHandled = false;
+        
+        const toggleMenu = function(e) {
+            if (e.type === 'touchstart') {
+                touchHandled = true;
+                e.preventDefault();
+            } else if (e.type === 'click' && touchHandled) {
+                // 터치 이벤트가 이미 처리되었으면 클릭 무시
+                touchHandled = false;
+                return;
+            }
+            
             navMenu.classList.toggle('active');
             
             // 햄버거 아이콘 애니메이션
@@ -20,13 +32,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
-        });
+            
+            // 클릭 이벤트는 정상 처리 후 플래그 리셋
+            if (e.type === 'click') {
+                touchHandled = false;
+            }
+        };
+        
+        menuToggle.addEventListener('touchstart', toggleMenu, { passive: false });
+        menuToggle.addEventListener('click', toggleMenu);
     }
     
     // 메뉴 항목 클릭 시 모바일 메뉴 닫기
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        let linkTouchHandled = false;
+        
+        const closeMenu = function(e) {
+            if (e.type === 'touchend') {
+                linkTouchHandled = true;
+            } else if (e.type === 'click' && linkTouchHandled) {
+                linkTouchHandled = false;
+                return;
+            }
+            
             if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
                 const spans = menuToggle.querySelectorAll('span');
@@ -34,6 +63,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
+            
+            if (e.type === 'click') {
+                linkTouchHandled = false;
+            }
+        };
+        
+        link.addEventListener('touchend', closeMenu);
+        link.addEventListener('click', closeMenu);
+    });
+    
+    // 긴급 연락처 터치 처리
+    const emergencyPhones = document.querySelectorAll('.emergency-contact .phone');
+    emergencyPhones.forEach(phone => {
+        const phoneNumber = phone.textContent.replace(/[^0-9]/g, '');
+        let phoneOriginalOpacity = '1';
+        let phoneTouchHandled = false;
+        
+        const callEmergency = function(e) {
+            if (e.type === 'touchend') {
+                phoneTouchHandled = true;
+                phone.style.opacity = phoneOriginalOpacity;
+                window.location.href = 'tel:' + phoneNumber;
+            } else if (e.type === 'click' && phoneTouchHandled) {
+                phoneTouchHandled = false;
+                return;
+            } else if (e.type === 'click') {
+                window.location.href = 'tel:' + phoneNumber;
+            }
+        };
+        
+        phone.style.cursor = 'pointer';
+        phone.addEventListener('click', callEmergency);
+        phone.addEventListener('touchstart', function(e) {
+            phoneOriginalOpacity = phone.style.opacity || '1';
+            phone.style.opacity = '0.8';
+        }, { passive: true });
+        phone.addEventListener('touchend', callEmergency);
+        phone.addEventListener('touchcancel', function(e) {
+            phone.style.opacity = phoneOriginalOpacity;
         });
     });
     

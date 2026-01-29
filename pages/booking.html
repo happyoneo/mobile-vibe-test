@@ -71,11 +71,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            min-height: 48px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            touch-action: manipulation;
         }
         
         .submit-button:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
+        }
+        
+        .submit-button:active {
+            transform: scale(0.98);
+            opacity: 0.9;
         }
         
         .required {
@@ -104,6 +112,20 @@
             
             .form-row {
                 grid-template-columns: 1fr;
+            }
+            
+            /* 모바일 터치 최적화 */
+            .submit-button {
+                min-height: 52px;
+                font-size: 18px;
+                padding: 16px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                min-height: 48px;
+                font-size: 16px; /* iOS Safari 자동 줌 방지 */
             }
         }
     </style>
