@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="행복한 동물병원 오시는 길 - 위치 및 교통편">
+    <title>오시는 길 - 행복한 동물병원</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .map-container {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .contact-details p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .transport-section {
+            background: #F8F9FA;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+        
+        .transport-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .transport-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .transport-item h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .transport-item p {
+            color: #555;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span>행복한 동물병원</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">홈</a></li>
+                <li><a href="services.html">진료안내</a></li>
+                <li><a href="team.html">의료진</a></li>
+                <li><a href="booking.html">예약하기</a></li>
+                <li><a href="health-info.html">건강정보</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+                <li><a href="contact.html">오시는길</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 타이틀 -->
+    <section class="hero" style="padding: 60px 20px;">
+        <div class="hero-content">
+            <h1>🗺️ 오시는 길</h1>
+            <p>행복한 동물병원을 찾아오세요</p>
+        </div>
+    </section>
+
+    <!-- 지도 -->
+    <section class="container">
+        <h2 class="section-title">위치</h2>
+        <div class="map-container">
+            <div style="text-align: center; color: white;">
+                <div style="font-size: 5rem;">📍</div>
+                <p style="font-size: 1.2rem; margin-top: 1rem;">
+                    실제 배포 시 Google Maps 또는<br>
+                    Kakao Map이 여기에 표시됩니다
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락처 정보 -->
+    <section class="container">
+        <h2 class="section-title">연락처 및 정보</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-details">
+                    <h3>주소</h3>
+                    <p>
+                        서울특별시 강남구 행복로 123<br>
+                        행복빌딩 1층<br>
+                        우편번호: 06000
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-details">
+                    <h3>전화번호</h3>
+                    <p>
+                        대표번호: 02-1234-5678<br>
+                        24시간 긴급: 02-1234-5679<br>
+                        팩스: 02-1234-5677
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-details">
+                    <h3>이메일</h3>
+                    <p>
+                        info@happyvet.com<br>
+                        emergency@happyvet.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">⏰</div>
+                <div class="contact-details">
+                    <h3>진료 시간</h3>
+                    <p>
+                        평일: 09:00 - 20:00<br>
+                        토요일: 09:00 - 18:00<br>
+                        일요일/공휴일: 10:00 - 16:00<br>
+                        점심시간: 13:00 - 14:00<br>
+                        <strong style="color: #FF6B6B;">* 24시간 긴급 진료 가능</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 대중교통 안내 -->
+    <section class="container">
+        <h2 class="section-title">대중교통 이용</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🚇</div>
+                <h3>지하철</h3>
+                <div class="transport-section">
+                    <div class="transport-item">
+                        <h4>2호선 강남역</h4>
+                        <p>3번 출구에서 도보 5분<br>역 앞 사거리에서 우회전</p>
+                    </div>
+                    <div class="transport-item">
+                        <h4>신분당선 강남역</h4>
+                        <p>지하 연결통로 이용<br>2호선 3번 출구로 이동</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚌</div>
+                <h3>버스</h3>
+                <div class="transport-section">
+                    <div class="transport-item">
+                        <h4>간선버스</h4>
+                        <p>146, 148, 301, 472, 740<br>강남역 정류장 하차</p>
+                    </div>
+                    <div class="transport-item">
+                        <h4>지선버스</h4>
+                        <p>4319, 6411<br>강남역 사거리 하차</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚗</div>
+                <h3>자가용</h3>
+                <div class="transport-section">
+                    <div class="transport-item">
+                        <h4>내비게이션</h4>
+                        <p>"행복한 동물병원" 또는<br>"강남구 행복로 123" 검색</p>
+                    </div>
+                    <div class="transport-item">
+                        <h4>주차 안내</h4>
+                        <p>건물 내 주차장 이용 가능<br>2시간 무료 주차<br>(주차권 발급)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주차 안내 -->
+    <section class="container">
+        <h2 class="section-title">주차 안내</h2>
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>🅿️ 주차 가능 대수</h4>
+                    <p>총 20대 (장애인 주차 3대 포함)</p>
+                </div>
+                <div class="info-item">
+                    <h4>⏱️ 무료 주차</h4>
+                    <p>진료 고객 2시간 무료</p>
+                </div>
+                <div class="info-item">
+                    <h4>💰 추가 요금</h4>
+                    <p>10분당 1,000원</p>
+                </div>
+                <div class="info-item">
+                    <h4>🎫 주차권 발급</h4>
+                    <p>수납 시 요청</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주변 안내 -->
+    <section class="container">
+        <h2 class="section-title">주변 안내</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏪</div>
+                <h3>편의시설</h3>
+                <p>강남역 인근으로 편의점, 카페, 식당 등 다양한 편의시설이 있습니다.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏦</div>
+                <h3>은행 및 ATM</h3>
+                <p>건물 1층에 ATM이 있으며, 인근에 여러 은행 지점이 있습니다.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌳</div>
+                <h3>산책 공간</h3>
+                <p>병원 뒤편에 작은 공원이 있어 진료 전후 반려동물과 산책하실 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+        <div class="emergency-contact" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+            <h3>찾아오시기 어려우신가요?</h3>
+            <p>언제든지 전화주시면 자세히 안내해드리겠습니다</p>
+            <div class="phone">📞 02-1234-5678</div>
+            <div style="margin-top: 2rem;">
+                <a href="booking.html" class="cta-button">진료 예약하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../index.html">홈</a>
+                <a href="services.html">진료안내</a>
+                <a href="team.html">의료진</a>
+                <a href="booking.html">예약하기</a>
+                <a href="contact.html">오시는길</a>
+            </div>
+            <p>🏥 행복한 동물병원</p>
+            <p>📍 서울특별시 강남구 행복로 123</p>
+            <p>☎️ 02-1234-5678 | 📧 info@happyvet.com</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 행복한 동물병원. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

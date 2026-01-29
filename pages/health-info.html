@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="반려동물 건강 정보 및 돌봄 가이드">
+    <title>건강 정보 - 행복한 동물병원</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .health-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .health-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .health-card ul {
+            line-height: 2;
+            color: #666;
+            margin-left: 1.5rem;
+        }
+        
+        .comfort-section {
+            background: linear-gradient(135deg, #FFF5E6, #FFE6F0);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .comfort-section h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            margin-top: 1rem;
+            color: #666;
+            line-height: 1.8;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span>행복한 동물병원</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">홈</a></li>
+                <li><a href="services.html">진료안내</a></li>
+                <li><a href="team.html">의료진</a></li>
+                <li><a href="booking.html">예약하기</a></li>
+                <li><a href="health-info.html">건강정보</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+                <li><a href="contact.html">오시는길</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 타이틀 -->
+    <section class="hero" style="padding: 60px 20px;">
+        <div class="hero-content">
+            <h1>💚 건강 정보</h1>
+            <p>소중한 반려동물을 위한 건강 가이드</p>
+        </div>
+    </section>
+
+    <!-- 위안 및 지원 섹션 -->
+    <section class="container">
+        <div class="comfort-section">
+            <h3>💕 아픈 반려동물을 돌보시는 보호자님께</h3>
+            <p style="font-size: 1.1rem; line-height: 2; color: var(--text-dark); margin: 2rem 0;">
+                힘든 시간을 보내고 계시죠? 보호자님의 사랑과 헌신이 반려동물에게 가장 큰 치료제입니다.<br>
+                저희가 함께하겠습니다. 희망을 잃지 마세요. 🌈
+            </p>
+            <div style="margin-top: 2rem;">
+                <a href="booking.html" class="cta-button">상담 예약하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 건강 관리 팁 -->
+    <section class="container">
+        <h2 class="section-title">반려동물 건강 관리 팁</h2>
+        
+        <div class="health-card">
+            <h3>🍖 영양 관리</h3>
+            <ul>
+                <li>나이와 체중에 맞는 적절한 사료 선택</li>
+                <li>규칙적인 식사 시간 유지</li>
+                <li>신선한 물을 항상 제공</li>
+                <li>과식 방지를 위한 적정량 급여</li>
+                <li>사람 음식 급여 자제 (특히 초콜릿, 양파, 포도 등 독성 식품)</li>
+            </ul>
+        </div>
+
+        <div class="health-card">
+            <h3>🏃 운동 및 활동</h3>
+            <ul>
+                <li>매일 규칙적인 산책 (강아지는 하루 2회, 30분 이상)</li>
+                <li>실내 놀이를 통한 정신적 자극</li>
+                <li>나이와 건강 상태에 맞는 운동량 조절</li>
+                <li>더운 날씨에는 아침/저녁 시간대 산책</li>
+                <li>고양이는 캣타워, 장난감 등으로 활동량 증진</li>
+            </ul>
+        </div>
+
+        <div class="health-card">
+            <h3>🛁 위생 관리</h3>
+            <ul>
+                <li>정기적인 목욕 (강아지 2-4주, 고양이는 필요시)</li>
+                <li>매일 빗질로 털 관리</li>
+                <li>귀 청소 및 검진 (주 1-2회)</li>
+                <li>치아 관리 및 칫솔질</li>
+                <li>발톱 정기적 관리</li>
+            </ul>
+        </div>
+
+        <div class="health-card">
+            <h3>💉 예방 관리</h3>
+            <ul>
+                <li>정기 예방접종 (연 1회)</li>
+                <li>심장사상충 예방약 매달 투여</li>
+                <li>외부 기생충 예방 (진드기, 벼룩)</li>
+                <li>정기 건강검진 (연 1-2회)</li>
+                <li>노령 동물은 6개월마다 검진 권장</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 계절별 주의사항 -->
+    <section class="container">
+        <h2 class="section-title">계절별 주의사항</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 style="color: #FFB6C1;">🌸 봄</h3>
+                <ul style="text-align: left; line-height: 2; color: #666;">
+                    <li>꽃가루 알레르기 주의</li>
+                    <li>진드기 예방</li>
+                    <li>환절기 감기 조심</li>
+                    <li>발정기 관리</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: #FFD700;">☀️ 여름</h3>
+                <ul style="text-align: left; line-height: 2; color: #666;">
+                    <li>열사병 예방</li>
+                    <li>충분한 수분 섭취</li>
+                    <li>서늘한 시간대 산책</li>
+                    <li>피부병 주의</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: #FFA500;">🍂 가을</h3>
+                <ul style="text-align: left; line-height: 2; color: #666;">
+                    <li>환절기 감기 주의</li>
+                    <li>털갈이 시즌 관리</li>
+                    <li>산책 증가</li>
+                    <li>식욕 변화 관찰</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: #87CEEB;">❄️ 겨울</h3>
+                <ul style="text-align: left; line-height: 2; color: #666;">
+                    <li>실내 온도 관리</li>
+                    <li>관절 건강 관리</li>
+                    <li>동상 예방</li>
+                    <li>충분한 영양 공급</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 응급처치 가이드 -->
+    <section class="container">
+        <h2 class="section-title">응급처치 가이드</h2>
+        
+        <div class="emergency-contact" style="background: linear-gradient(135deg, #FF6B6B, #FFA07A); margin-bottom: 2rem;">
+            <h3>⚠️ 응급 상황 체크리스트</h3>
+            <ul style="text-align: left; max-width: 600px; margin: 1rem auto; line-height: 2;">
+                <li>호흡 곤란 또는 무호흡</li>
+                <li>의식 불명</li>
+                <li>심한 출혈</li>
+                <li>경련 발작</li>
+                <li>중독 의심 (독성 물질 섭취)</li>
+                <li>교통사고 등 외상</li>
+                <li>갑작스런 허탈, 쇼크</li>
+            </ul>
+            <div class="phone" style="margin-top: 2rem;">즉시 연락: 📞 02-1234-5678</div>
+        </div>
+
+        <div class="health-card">
+            <h3>🩹 기본 응급처치</h3>
+            <ul>
+                <li><strong>출혈:</strong> 깨끗한 거즈로 압박 지혈, 심한 경우 즉시 내원</li>
+                <li><strong>화상:</strong> 찬물로 식히고 깨끗한 거즈로 덮어 내원</li>
+                <li><strong>구토/설사:</strong> 12-24시간 금식 후 소량씩 급여, 지속 시 내원</li>
+                <li><strong>경련:</strong> 주변 물건 치우고 관찰, 5분 이상 지속 시 응급 내원</li>
+                <li><strong>이물질 섭취:</strong> 억지로 토하게 하지 말고 즉시 병원 연락</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+        <h2 class="section-title">자주 묻는 질문 (FAQ)</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Q. 예방접종은 언제부터 시작하나요?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                강아지와 고양이 모두 생후 6-8주부터 예방접종을 시작합니다. 
+                기본 접종은 2-4주 간격으로 3회 접종하며, 이후 매년 추가 접종이 필요합니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Q. 중성화 수술은 언제 하는 것이 좋나요?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                일반적으로 생후 6개월 전후가 적기입니다. 다만 개체의 건강 상태와 
+                품종에 따라 달라질 수 있으므로 수의사와 상담 후 결정하시는 것이 좋습니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Q. 구토를 자주 하는데 병원에 가야 하나요?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                하루에 1-2회 정도는 정상일 수 있지만, 지속적인 구토, 피가 섞인 구토, 
+                설사 동반, 식욕 부진 등의 증상이 있다면 즉시 내원하시는 것이 좋습니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Q. 심장사상충 예방약은 꼭 먹여야 하나요?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                네, 심장사상충은 모기를 통해 전염되며 치명적인 질병입니다. 
+                예방약을 매달 정기적으로 투여하면 100% 예방이 가능하므로 
+                반드시 예방하시는 것을 권장합니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Q. 노령 동물은 어떻게 관리해야 하나요?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                노령 동물은 6개월마다 정기 건강검진을 받아야 합니다. 
+                관절 건강, 치아 관리, 영양 조절이 특히 중요하며, 
+                적절한 운동과 편안한 환경 제공이 필요합니다.
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../index.html">홈</a>
+                <a href="services.html">진료안내</a>
+                <a href="team.html">의료진</a>
+                <a href="booking.html">예약하기</a>
+                <a href="contact.html">오시는길</a>
+            </div>
+            <p>🏥 행복한 동물병원</p>
+            <p>📍 서울특별시 강남구 행복로 123</p>
+            <p>☎️ 02-1234-5678 | 📧 info@happyvet.com</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 행복한 동물병원. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // FAQ 아코디언 (접근성 향상)
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            
+            // ARIA 속성 추가
+            question.setAttribute('role', 'button');
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('aria-expanded', 'false');
+            question.setAttribute('aria-controls', `faq-answer-${index}`);
+            
+            const answer = item.querySelector('.faq-answer');
+            answer.setAttribute('id', `faq-answer-${index}`);
+            
+            // 클릭 이벤트
+            item.addEventListener('click', function() {
+                const isActive = this.classList.toggle('active');
+                question.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            });
+            
+            // 키보드 접근성 (Enter/Space)
+            question.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="행복한 동물병원 갤러리 - 시설과 행복한 반려동물들">
+    <title>갤러리 - 행복한 동물병원</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+        
+        .gallery-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-caption h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-caption p {
+            color: #666;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #FFF5E6, #FFE6F0);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: 0;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            color: #666;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span>행복한 동물병원</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">홈</a></li>
+                <li><a href="services.html">진료안내</a></li>
+                <li><a href="team.html">의료진</a></li>
+                <li><a href="booking.html">예약하기</a></li>
+                <li><a href="health-info.html">건강정보</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+                <li><a href="contact.html">오시는길</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 타이틀 -->
+    <section class="hero" style="padding: 60px 20px;">
+        <div class="hero-content">
+            <h1>📸 갤러리</h1>
+            <p>우리 병원의 시설과 행복한 반려동물들</p>
+        </div>
+    </section>
+
+    <!-- 병원 시설 -->
+    <section class="container">
+        <h2 class="section-title">병원 시설</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image">🏥</div>
+                <div class="gallery-caption">
+                    <h3>깨끗한 대기실</h3>
+                    <p>편안하고 넓은 대기 공간</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🔬</div>
+                <div class="gallery-caption">
+                    <h3>최신 검사 장비</h3>
+                    <p>디지털 X-ray, 초음파 등</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">⚕️</div>
+                <div class="gallery-caption">
+                    <h3>무균 수술실</h3>
+                    <p>안전한 수술을 위한 시설</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🛏️</div>
+                <div class="gallery-caption">
+                    <h3>입원실</h3>
+                    <p>쾌적하고 안정적인 입원 환경</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🧼</div>
+                <div class="gallery-caption">
+                    <h3>미용실</h3>
+                    <p>전문 미용 서비스</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🌳</div>
+                <div class="gallery-caption">
+                    <h3>야외 공간</h3>
+                    <p>산책과 휴식을 위한 정원</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 행복한 순간들 -->
+    <section class="container">
+        <h2 class="section-title">행복한 순간들 ❤️</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image">🐶</div>
+                <div class="gallery-caption">
+                    <h3>건강해진 뭉치</h3>
+                    <p>피부병 완치 후 밝은 모습</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🐱</div>
+                <div class="gallery-caption">
+                    <h3>씩씩한 나비</h3>
+                    <p>수술 후 건강하게 회복</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🐕</div>
+                <div class="gallery-caption">
+                    <h3>활발한 초코</h3>
+                    <p>예방접종 후 건강한 모습</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">😺</div>
+                <div class="gallery-caption">
+                    <h3>사랑스러운 코코</h3>
+                    <p>정기검진 중</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🐩</div>
+                <div class="gallery-caption">
+                    <h3>귀여운 모모</h3>
+                    <p>치아 관리 후</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-image">🐈</div>
+                <div class="gallery-caption">
+                    <h3>건강한 호두</h3>
+                    <p>건강검진 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 보호자 후기 -->
+    <section class="container">
+        <h2 class="section-title">보호자님 후기</h2>
+        
+        <div class="testimonial">
+            <p class="testimonial-text">
+                우리 뭉치가 심한 피부병으로 고생할 때 정말 힘들었어요. 
+                하지만 이사랑 선생님의 세심한 진료 덕분에 완치되었습니다. 
+                진심으로 감사드립니다! 💕
+            </p>
+            <p class="testimonial-author">- 뭉치 엄마</p>
+        </div>
+
+        <div class="testimonial">
+            <p class="testimonial-text">
+                교통사고로 다리가 골절되어 응급으로 찾아갔는데, 
+                박건강 선생님께서 훌륭하게 수술해주셔서 이제는 뛰어다닙니다. 
+                평생 감사하겠습니다. 🙏
+            </p>
+            <p class="testimonial-author">- 초코 아빠</p>
+        </div>
+
+        <div class="testimonial">
+            <p class="testimonial-text">
+                노령묘인 나비가 건강검진에서 질병을 조기 발견해서 
+                잘 치료받았어요. 정기검진이 정말 중요하다는 걸 알았습니다. 
+                항상 친절하게 설명해주셔서 감사해요. ❤️
+            </p>
+            <p class="testimonial-author">- 나비 집사</p>
+        </div>
+
+        <div class="testimonial">
+            <p class="testimonial-text">
+                응급 상황에서 밤늦게 연락했는데도 친절하게 대응해주셨어요. 
+                24시간 긴급 진료 덕분에 우리 코코가 건강을 되찾았습니다. 
+                믿고 맡길 수 있는 병원입니다! 🌟
+            </p>
+            <p class="testimonial-author">- 코코 보호자</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+        <div class="emergency-contact" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+            <h3>여러분도 행복한 순간을 만들어가세요</h3>
+            <p>우리 병원과 함께 반려동물의 건강을 지켜요</p>
+            <div style="margin-top: 2rem;">
+                <a href="booking.html" class="cta-button">진료 예약하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../index.html">홈</a>
+                <a href="services.html">진료안내</a>
+                <a href="team.html">의료진</a>
+                <a href="booking.html">예약하기</a>
+                <a href="contact.html">오시는길</a>
+            </div>
+            <p>🏥 행복한 동물병원</p>
+            <p>📍 서울특별시 강남구 행복로 123</p>
+            <p>☎️ 02-1234-5678 | 📧 info@happyvet.com</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 행복한 동물병원. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

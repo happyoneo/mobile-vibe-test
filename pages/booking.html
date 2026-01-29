@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="행복한 동물병원 온라인 예약">
+    <title>진료 예약 - 행복한 동물병원</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .booking-form {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.2);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .required {
+            color: #FF6B6B;
+        }
+        
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #90EE90, #98D8C8);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span>행복한 동물병원</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">홈</a></li>
+                <li><a href="services.html">진료안내</a></li>
+                <li><a href="team.html">의료진</a></li>
+                <li><a href="booking.html">예약하기</a></li>
+                <li><a href="health-info.html">건강정보</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+                <li><a href="contact.html">오시는길</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 타이틀 -->
+    <section class="hero" style="padding: 60px 20px;">
+        <div class="hero-content">
+            <h1>📅 진료 예약</h1>
+            <p>온라인으로 간편하게 예약하세요</p>
+        </div>
+    </section>
+
+    <!-- 예약 안내 -->
+    <section class="container">
+        <div class="info-section" style="max-width: 700px; margin: 0 auto 3rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📌 예약 전 확인사항</h3>
+            <ul style="line-height: 2; color: #666;">
+                <li>예약 신청 후 담당자가 확인 전화를 드립니다</li>
+                <li>응급 상황인 경우 예약하지 마시고 바로 내원해주세요 (24시간 긴급 진료)</li>
+                <li>예약 변경이나 취소는 최소 1일 전에 연락주세요</li>
+                <li>초진인 경우 여유있게 시간을 잡아드립니다</li>
+            </ul>
+        </div>
+
+        <!-- 예약 폼 -->
+        <form class="booking-form" id="bookingForm">
+            <h2 style="margin-bottom: 2rem; color: var(--text-dark);">예약 정보 입력</h2>
+            
+            <div class="form-group">
+                <label>보호자 성함 <span class="required">*</span></label>
+                <input type="text" name="guardian_name" required placeholder="예: 홍길동">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>연락처 <span class="required">*</span></label>
+                    <input type="tel" name="phone" required placeholder="010-1234-5678">
+                </div>
+                
+                <div class="form-group">
+                    <label>이메일</label>
+                    <input type="email" name="email" placeholder="example@email.com">
+                </div>
+            </div>
+            
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #E0E0E0;">
+            
+            <div class="form-group">
+                <label>반려동물 이름 <span class="required">*</span></label>
+                <input type="text" name="pet_name" required placeholder="예: 뭉치">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>동물 종류 <span class="required">*</span></label>
+                    <select name="pet_type" required>
+                        <option value="">선택하세요</option>
+                        <option value="dog">강아지</option>
+                        <option value="cat">고양이</option>
+                        <option value="rabbit">토끼</option>
+                        <option value="hamster">햄스터</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>품종</label>
+                    <input type="text" name="breed" placeholder="예: 말티즈">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>나이</label>
+                    <input type="text" name="age" placeholder="예: 3살">
+                </div>
+                
+                <div class="form-group">
+                    <label>성별</label>
+                    <select name="gender">
+                        <option value="">선택하세요</option>
+                        <option value="male">남아</option>
+                        <option value="female">여아</option>
+                        <option value="neutered_male">중성화 남아</option>
+                        <option value="neutered_female">중성화 여아</option>
+                    </select>
+                </div>
+            </div>
+            
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #E0E0E0;">
+            
+            <div class="form-group">
+                <label>진료 과목 <span class="required">*</span></label>
+                <select name="service" required>
+                    <option value="">선택하세요</option>
+                    <option value="internal">내과</option>
+                    <option value="surgery">외과</option>
+                    <option value="dental">치과</option>
+                    <option value="dermatology">피부과</option>
+                    <option value="vaccination">예방접종</option>
+                    <option value="checkup">건강검진</option>
+                    <option value="other">기타</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>희망 날짜 <span class="required">*</span></label>
+                    <input type="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>희망 시간 <span class="required">*</span></label>
+                    <select name="time" required>
+                        <option value="">선택하세요</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="14:00">14:00 (점심시간 이후)</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>증상 또는 방문 사유 <span class="required">*</span></label>
+                <textarea name="symptoms" required placeholder="반려동물의 증상이나 진료 받으실 이유를 자세히 적어주세요"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>기타 요청사항</label>
+                <textarea name="notes" placeholder="기타 전달하실 사항이 있으시면 적어주세요"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-button">예약 신청하기</button>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            <h2>✅ 예약 신청이 완료되었습니다!</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">
+                담당자가 확인 후 연락드리겠습니다.<br>
+                빠른 쾌유를 기원합니다. 🙏
+            </p>
+        </div>
+    </section>
+
+    <!-- 긴급 연락처 -->
+    <section class="container">
+        <div class="emergency-contact">
+            <h3>🚨 응급 상황인가요?</h3>
+            <p>예약하지 마시고 즉시 연락주세요</p>
+            <div class="phone">📞 02-1234-5678</div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../index.html">홈</a>
+                <a href="services.html">진료안내</a>
+                <a href="team.html">의료진</a>
+                <a href="booking.html">예약하기</a>
+                <a href="contact.html">오시는길</a>
+            </div>
+            <p>🏥 행복한 동물병원</p>
+            <p>📍 서울특별시 강남구 행복로 123</p>
+            <p>☎️ 02-1234-5678 | 📧 info@happyvet.com</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2026 행복한 동물병원. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/booking.js"></script>
+</body>
+</html>
