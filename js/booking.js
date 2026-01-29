@@ -3,6 +3,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('bookingForm');
     const successMessage = document.getElementById('successMessage');
+    const submitButton = bookingForm ? bookingForm.querySelector('.submit-button') : null;
+    
+    // 제출 버튼 터치 피드백
+    if (submitButton) {
+        submitButton.addEventListener('touchstart', function(e) {
+            submitButton.style.transform = 'scale(0.98)';
+        }, { passive: true });
+        
+        submitButton.addEventListener('touchend', function(e) {
+            submitButton.style.transform = 'scale(1)';
+        }, { passive: true });
+    }
     
     if (bookingForm) {
         // 오늘 날짜를 최소 날짜로 설정

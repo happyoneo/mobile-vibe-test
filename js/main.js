@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.getElementById('navMenu');
     
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        // 터치와 클릭 모두 지원
+        const toggleMenu = function(e) {
+            e.preventDefault();
             navMenu.classList.toggle('active');
             
             // 햄버거 아이콘 애니메이션
@@ -20,13 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
-        });
+        };
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            toggleMenu(e);
+        }, { passive: false });
     }
     
     // 메뉴 항목 클릭 시 모바일 메뉴 닫기
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        const closeMenu = function() {
             if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
                 const spans = menuToggle.querySelectorAll('span');
@@ -34,7 +42,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
+        };
+        
+        link.addEventListener('click', closeMenu);
+        link.addEventListener('touchend', closeMenu);
+    });
+    
+    // 긴급 연락처 터치 처리
+    const emergencyPhones = document.querySelectorAll('.emergency-contact .phone');
+    emergencyPhones.forEach(phone => {
+        const phoneNumber = phone.textContent.replace(/[^0-9]/g, '');
+        
+        const callEmergency = function(e) {
+            e.preventDefault();
+            window.location.href = 'tel:' + phoneNumber;
+        };
+        
+        phone.style.cursor = 'pointer';
+        phone.addEventListener('click', callEmergency);
+        phone.addEventListener('touchstart', function(e) {
+            // 터치 피드백
+            phone.style.opacity = '0.8';
         });
+        phone.addEventListener('touchend', function(e) {
+            phone.style.opacity = '1';
+            callEmergency(e);
+        });
+    });
+    
+    // CTA 버튼 터치 피드백 개선
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach(button => {
+        button.addEventListener('touchstart', function(e) {
+            button.style.transform = 'scale(0.98)';
+        }, { passive: true });
+        
+        button.addEventListener('touchend', function(e) {
+            button.style.transform = 'scale(1)';
+        }, { passive: true });
     });
     
     // 스크롤 애니메이션
